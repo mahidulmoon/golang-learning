@@ -2,7 +2,7 @@ package main
 import "fmt"
 
 func main(){
-	functionname()
+	defer functionname()
 	funtiontoadd(3,4,"moon")
 	result:= functionreturn(5)
 	fmt.Println(result)
