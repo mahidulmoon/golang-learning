@@ -1,6 +1,9 @@
 package db
 import(
+	"fmt"
 	"time"
+	orm "github.com/go-pg/pg/orm"
+	pg "github.com/go-pg/pg"
 )
 
 
@@ -20,4 +23,18 @@ type ProductItem struct{
 	CreatedAt time.Time `sql:"created_at"`
 	UpdatedAt time.Time `sql:"updated_at"`
 	IsActive bool `sql:"is_active"`
+}
+
+
+func CreateProductItemsTable(db *pg.DB) error{
+	opts := &orm.CreateTableOptions{
+		IfNotExists: true,
+	}
+	createErr := db.CreateTable(&ProductItem{},opts)
+	if createErr != nil{
+		fmt.Println("Error while creating table productItems")
+		return createErr
+	}
+	fmt.Println("Table productItems created successfully")
+	return nil
 }
