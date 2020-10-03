@@ -1,5 +1,6 @@
 package controllers
 import (
+	//"fmt"
 	models "golang-example/models"
 	"net/http"
 	
@@ -20,12 +21,13 @@ func FindBooks(c *gin.Context) {
 func CreateBook(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)// Validate input
 	var input models.CreateBookInput
+	//fmt.Println(input)
 	if err := c.ShouldBindJSON(&input); err != nil {
 	 c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	 return
 	}
 	// Create Book
-	book := models.Book{Title: input.Author, Author: input.Author}
+	book := models.Book{Title: input.Title, Author: input.Author}
 	db.Create(&book)
 	c.JSON(http.StatusOK, gin.H{"data": book})}
 

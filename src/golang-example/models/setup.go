@@ -29,7 +29,7 @@ func SetupModels() *gorm.DB {//db, err := gorm.Open("sqlite3", "test.db")// Enab
 	 panic("Failed to connect to database!")
 	}
 	db.AutoMigrate(&Book{})// Initialise value
-	m := Book{Author: "author1", Title: "title1"}
-	db.Create(&m)
+	// m := Book{Author: "author1", Title: "title1"}
+	// db.Create(&m)
 	return db
    }
