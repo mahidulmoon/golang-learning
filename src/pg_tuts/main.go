@@ -13,7 +13,8 @@ func main(){
 	pg_db := db.Connect()
 	//SaveProduct(pg_db)
 	//db.PlaceHolderDemo(pg_db)
-	DeleteItem(pg_db)
+	//DeleteItem(pg_db)
+	UpdateItemPrice(pg_db)
 
 }
 
@@ -65,4 +66,12 @@ func DeleteItem(dbRef *pg.DB){
 		Name: "Product 8",
 	}
 	newPI.DeleteItem(dbRef)
+}
+
+func UpdateItemPrice(dbref *pg.DB){
+	newPI := &db.ProductItem{
+		ID: 2,
+		Price: 2.0,
+	}
+	newPI.UpdatePrice(dbref)
 }

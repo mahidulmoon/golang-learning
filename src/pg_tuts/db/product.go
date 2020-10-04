@@ -76,3 +76,13 @@ func CreateProductItemsTable(db *pg.DB) error{
 	fmt.Println("Table productItems created successfully")
 	return nil
 }
+
+func (pi *ProductItem) UpdatePrice(db *pg.DB) error{
+	_, updateErr:= db.Model(pi).Set("price = ?price").Where("id = ?id").Update()
+	if updateErr != nil{
+		fmt.Println("Error while updating price")
+		return updateErr
+	}
+	fmt.Println("Price updated successfully")
+	return nil
+}
