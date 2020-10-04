@@ -6,7 +6,7 @@ import(
 	pg "github.com/go-pg/pg"
 )
 
-func Connect(){
+func Connect() *pg.DB{
 	opts := &pg.Options{
 		User: "postgres",
 		Password: "1234",
@@ -20,11 +20,11 @@ func Connect(){
 	}
 	fmt.Println("Connection to database successful")
 	CreateProductItemsTable(db)
-	closeErr := db.Close()
-	if closeErr != nil{
-		fmt.Println("Error while closing the connection")
-		os.Exit(100)
-	}
-	fmt.Println("Connection close successfully")
-	return 
+	// closeErr := db.Close()
+	// if closeErr != nil{
+	// 	fmt.Println("Error while closing the connection")
+	// 	os.Exit(100)
+	// }
+	// fmt.Println("Connection close successfully")
+	return db
 }
