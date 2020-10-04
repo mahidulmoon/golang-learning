@@ -14,7 +14,8 @@ func main(){
 	//SaveProduct(pg_db)
 	//db.PlaceHolderDemo(pg_db)
 	//DeleteItem(pg_db)
-	UpdateItemPrice(pg_db)
+	// UpdateItemPrice(pg_db)
+	GetByID(pg_db)
 
 }
 
@@ -74,4 +75,11 @@ func UpdateItemPrice(dbref *pg.DB){
 		Price: 2.0,
 	}
 	newPI.UpdatePrice(dbref)
+}
+
+func GetByID(dbRef *pg.DB){
+	newPI := &db.ProductItem{
+		ID: 1,
+	}
+	newPI.GetByID(dbRef)
 }
