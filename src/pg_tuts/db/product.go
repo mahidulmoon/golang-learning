@@ -44,7 +44,7 @@ func (pi *ProductItem) DeleteItem(db *pg.DB) error{
 	return nil
 }
 func (pi *ProductItem) GetByID(db *pg.DB) error{
-	getErr := db.Model(pi).Where("id = ?0",pi.ID).Select()
+	getErr := db.Model(pi).Where("id = ?0",pi.ID).Where("name = ?0",pi.Name).Select()
 	if getErr != nil{
 		fmt.Println("Error while getting value but id.")
 		return getErr

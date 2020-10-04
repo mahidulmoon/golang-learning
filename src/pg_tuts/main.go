@@ -80,6 +80,7 @@ func UpdateItemPrice(dbref *pg.DB){
 func GetByID(dbRef *pg.DB){
 	newPI := &db.ProductItem{
 		ID: 1,
+		Name: "Product 1",
 	}
 	newPI.GetByID(dbRef)
 }
