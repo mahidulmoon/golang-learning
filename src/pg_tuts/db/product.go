@@ -34,6 +34,16 @@ func (pi *ProductItem) Save(db *pg.DB) error{
 	fmt.Println("ProductItem inserted successfull")
 	return nil
 }
+func (pi *ProductItem) DeleteItem(db *pg.DB) error{
+	_, deleteErr:= db.Model(pi).Where("name = ?name").Delete()
+	if deleteErr !=nil{
+		fmt.Println("Error while deleting item")
+		return deleteErr
+	}
+	fmt.Println("Delete successful")
+	return nil
+}
+
 func (pi *ProductItem) SaveAndReturn(db *pg.DB) (*ProductItem,error){
 	InsertResult,insertErr := db.Model(pi).Returning("+").Insert()
 	if insertErr !=nil{

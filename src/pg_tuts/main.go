@@ -12,7 +12,9 @@ func main(){
 	fmt.Println("hello")
 	pg_db := db.Connect()
 	//SaveProduct(pg_db)
-	db.PlaceHolderDemo(pg_db)
+	//db.PlaceHolderDemo(pg_db)
+	DeleteItem(pg_db)
+
 }
 
 func SaveProduct(dbRef *pg.DB){
@@ -56,4 +58,11 @@ func SaveProduct(dbRef *pg.DB){
 	//newPI.SaveAndReturn(dbRef)
 	// totalItems := []*db.ProductItem{newPI1,newPI2}
 	// newPI1.SaveMultiple(dbref,totalItems)
+}
+
+func DeleteItem(dbRef *pg.DB){
+	newPI := &db.ProductItem{
+		Name: "Product 8",
+	}
+	newPI.DeleteItem(dbRef)
 }
