@@ -44,6 +44,15 @@ func (pi *ProductItem) SaveAndReturn(db *pg.DB) (*ProductItem,error){
 	return pi,nil
 
 }
+func (pi *ProductItem) SaveMultiple(db *pg.DB,items ...*ProductItem) error{
+	_, insertErr:= db.Model(items[0],items[1]).Insert()
+	if insertErr != nil{
+		fmt.Println("error while inserting bulk items")
+		return insertErr
+	}
+	fmt.Println("Bulk insert successfully")
+	return nil
+}
 
 func CreateProductItemsTable(db *pg.DB) error{
 	opts := &orm.CreateTableOptions{

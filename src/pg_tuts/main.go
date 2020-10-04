@@ -15,8 +15,26 @@ func main(){
 }
 
 func SaveProduct(dbRef *pg.DB){
-	newPI := &db.ProductItem{
-		Name: "Product 2",
+	newPI1 := &db.ProductItem{
+		Name: "Product 8",
+		Desc: "Product 2 desc",
+		Image: "this is image path new",
+		Price: 4.5,
+		Features: struct{
+			Name string 
+			Desc string 
+			Imp int
+		}{
+			Name: "F2",
+			Desc : "F2 desc",
+			Imp: 3,
+		},
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
+		IsActive: true,
+	}
+	newPI2 := &db.ProductItem{
+		Name: "Product 7",
 		Desc: "Product 2 desc",
 		Image: "this is image path new",
 		Price: 4.5,
@@ -34,5 +52,7 @@ func SaveProduct(dbRef *pg.DB){
 		IsActive: true,
 	}
 	//newPI.Save(dbRef)
-	newPI.SaveAndReturn(dbRef)
+	//newPI.SaveAndReturn(dbRef)
+	totalItems := []*db.ProductItem{newPI1,newPI2}
+	newPI1.SaveMultiple(dbref,totalItems)
 }
