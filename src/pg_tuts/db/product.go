@@ -10,19 +10,19 @@ import(
 type ProductItem struct{
 	RefPointer int `sql:"-"`
 	tablename struct{} `sql:"product_items_collection"`
-	ID int `sql:"id,pk"`
+	ID int `sql:"id,pk" json:"id,omitempty"`
 	Name string `sql:"name,unique"`
 	Desc string `sql:"desc"`
-	Image string `sql:"image"`
-	Price float64 `sql:"price,type:real"`
+	Image string `sql:"image" json:"image"`
+	Price float64 `sql:"price,type:real" json:"price"`
 	Features struct{
 		Name string
 		Desc string
 		Imp int
 	} `sql:"features,type:jsonb"`
-	CreatedAt time.Time `sql:"created_at"`
-	UpdatedAt time.Time `sql:"updated_at"`
-	IsActive bool `sql:"is_active"`
+	CreatedAt time.Time `sql:"created_at" json:"created_at"`
+	UpdatedAt time.Time `sql:"updated_at" json:"updated_at"`
+	IsActive bool `sql:"is_active" json:"is_active"`
 }
 
 func (pi *ProductItem) Save(db *pg.DB) error{
