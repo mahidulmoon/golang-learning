@@ -62,3 +62,21 @@ func GetProductBytid() gin.HandlerFunc{
 		}
 	}
 }
+
+func DeleteByID() gin.HandlerFunc{
+	return func(c *gin.Context){
+		ID,_ := strconv.Atoi(c.Param("id"))
+		//model := models.ProductItem{}
+		
+		err := models.DeleteProductsById(ID)
+		if err != nil{
+			c.JSON(http.StatusUnprocessableEntity,gin.H{
+				"erro": err,
+			})
+		}else{
+			c.JSON(200,gin.H{
+				"success":"deleted successfully",
+			})
+		}
+	}
+}

@@ -55,3 +55,11 @@ func GetProductsById(id int)(ProductItem,error){
 	err := dbpg.Model(&model).Where("id = ?",id).Select()
 	return model,err
 }
+
+func DeleteProductsById(id int) error{
+	dbpg := db.Connect()
+	var model ProductItem
+	models,err := dbpg.Model(&model).Where("id = ?",id).Delete()
+	fmt.Println(models)
+	return err
+}

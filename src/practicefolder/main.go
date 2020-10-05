@@ -18,6 +18,7 @@ func main(){
 	router.GET("/products",handlers.GetMeeting())
 	router.POST("/products",handlers.Add())
 	router.GET("/products/:id",handlers.GetProductBytid())
+	router.DELETE("/products/:id",handlers.DeleteByID())
 	
 
 	router.Run()
