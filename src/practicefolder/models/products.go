@@ -1,24 +1,25 @@
 package models
 
 import(
-	"time"
+	
 	"fmt"
 	orm "github.com/go-pg/pg/orm"
 	pg "github.com/go-pg/pg"
 	db "practicefolder/databaseconnector"
+	"time"
 )
 
 type ProductItem struct{
 	RefPointer int `sql:"-"`
 	tablename struct{} `sql:"product_items_collection"`
-	ID int `sql:"id,pk"`
-	Name string `sql:"name,unique"`
-	Desc string `sql:"desc"`
-	Image string `sql:"image"`
-	Price float64 `sql:"price,type:real"`
-	CreatedAt time.Time `sql:"created_at"`
-	UpdatedAt time.Time `sql:"updated_at"`
-	IsActive bool `sql:"is_active"`
+	ID int `sql:"id,pk" json:"id"`
+	Name string `sql:"name,unique" json:"name"`
+	Desc string `sql:"desc" json:"desc"`
+	Image string `sql:"image" json:"image"`
+	Price float64 `sql:"price,type:real" json:"price"`
+	CreatedAt time.Time `sql:"created_at" json:"created_at"`
+	UpdatedAt time.Time `sql:"updated_at" json:"updated_at"`
+	IsActive bool `sql:"is_active" json:"isactive"`
 } 
 
 func CreateProductItemsTable(db *pg.DB) error{
@@ -39,4 +40,12 @@ func GetProducts()([]ProductItem,error){
 	var model []ProductItem
 	err := dbpg.Model(&model).Order("id ASC").Select()
 	return model,err
+}
+
+func (c *ProductItem) AddProduct() error{
+	dbpg := db.Connect()
+	//c.CreatedAt := time.now()
+	_, err:= dbpg.Model(c).Insert()
+
+	return err
 }

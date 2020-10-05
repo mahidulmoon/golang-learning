@@ -16,6 +16,7 @@ func main(){
 	router.Use(CORSMiddleware())
 
 	router.GET("/products",handlers.GetMeeting())
+	router.POST("/products",handlers.Add())
 	
 
 	router.Run()
