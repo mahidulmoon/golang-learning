@@ -4,6 +4,7 @@ import(
 	"github.com/gin-gonic/gin"
 	"practicefolder/models"
 	"net/http"
+	"strconv"
 )
 
 func GetMeeting() gin.HandlerFunc{
@@ -42,6 +43,22 @@ func Add() gin.HandlerFunc{
 					"success" : "addedd successfully",
 				})
 			}
+		}
+	}
+}
+
+func GetProductBytid() gin.HandlerFunc{
+	return func(c *gin.Context){
+		ID,_ := strconv.Atoi(c.Param("id"))
+		model := models.ProductItem{}
+		
+		model,err := models.GetProductsById(ID)
+		if err != nil{
+			c.JSON(http.StatusUnprocessableEntity,gin.H{
+				"error": err,
+			})
+		}else{
+			c.JSON(http.StatusOK,model)
 		}
 	}
 }

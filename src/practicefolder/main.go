@@ -17,6 +17,7 @@ func main(){
 
 	router.GET("/products",handlers.GetMeeting())
 	router.POST("/products",handlers.Add())
+	router.GET("/products/:id",handlers.GetProductBytid())
 	
 
 	router.Run()

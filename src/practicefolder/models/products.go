@@ -49,3 +49,9 @@ func (c *ProductItem) AddProduct() error{
 
 	return err
 }
+func GetProductsById(id int)(ProductItem,error){
+	dbpg := db.Connect()
+	var model ProductItem
+	err := dbpg.Model(&model).Where("id = ?",id).Select()
+	return model,err
+}
