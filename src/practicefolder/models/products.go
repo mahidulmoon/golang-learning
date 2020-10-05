@@ -5,7 +5,7 @@ import(
 	"fmt"
 	orm "github.com/go-pg/pg/orm"
 	pg "github.com/go-pg/pg"
-	//db "practicefolder/databaseconnector"
+	db "practicefolder/databaseconnector"
 )
 
 type ProductItem struct{
@@ -32,4 +32,11 @@ func CreateProductItemsTable(db *pg.DB) error{
 	}
 	fmt.Println("Table productItems created successfully")
 	return nil
+}
+
+func GetProducts()([]ProductItem,error){
+	dbpg := db.Connect()
+	var model []ProductItem
+	err := dbpg.Model(&model).Order("id ASC").Select()
+	return model,err
 }

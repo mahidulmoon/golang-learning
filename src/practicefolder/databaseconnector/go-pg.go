@@ -6,6 +6,8 @@ import(
 	pg "github.com/go-pg/pg"
 )
 
+var db *pg.DB
+
 func Connect() *pg.DB{
 	opts := &pg.Options{
 		User: "postgres",
@@ -13,7 +15,7 @@ func Connect() *pg.DB{
 		Addr: "localhost:5432",
 		Database: "practicefolder",
 	}
-	var db *pg.DB = pg.Connect(opts)
+	db = pg.Connect(opts)
 	if db == nil{
 		fmt.Println("Failed to connect to databse ")
 		os.Exit(100)
