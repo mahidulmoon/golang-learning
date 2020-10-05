@@ -80,3 +80,25 @@ func DeleteByID() gin.HandlerFunc{
 		}
 	}
 }
+
+
+func UpdateProd() gin.HandlerFunc{
+	return func(c *gin.Context){
+		var model models.ProductItem
+		err := c.ShouldBindJSON(&model)
+		if err != nil{
+			c.JSON(http.StatusUnprocessableEntity,gin.H{
+				"error" : err,
+			})
+		}else {
+			err := model.UpdateProduct()
+			if err != nil{
+				c.JSON(http.StatusInternalServerError, gin.H{
+					"err":err,
+				})
+			}else{
+				c.JSON(http.StatusCreated,gin.H{"id":model.ID})
+			}
+		}
+	}
+}

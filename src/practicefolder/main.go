@@ -19,6 +19,8 @@ func main(){
 	router.POST("/products",handlers.Add())
 	router.GET("/products/:id",handlers.GetProductBytid())
 	router.DELETE("/products/:id",handlers.DeleteByID())
+	router.PATCH("/products/:id",handlers.UpdateProd())
+
 	
 
 	router.Run()
