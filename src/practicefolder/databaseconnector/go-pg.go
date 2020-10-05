@@ -11,7 +11,7 @@ func Connect() *pg.DB{
 		User: "postgres",
 		Password: "1234",
 		Addr: "localhost:5432",
-		Database: "pratice",
+		Database: "practicefolder",
 	}
 	var db *pg.DB = pg.Connect(opts)
 	if db == nil{

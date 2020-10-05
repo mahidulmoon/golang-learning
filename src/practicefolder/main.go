@@ -2,14 +2,16 @@ package main
 
 import(
 	"fmt"
-	//db "practicefolder/databaseconnector"
+	db "practicefolder/databaseconnector"
 	"github.com/gin-gonic/gin"
 	"practicefolder/handlers"
+	"practicefolder/models"
 )
 
 func main(){
 	fmt.Println("hello")
-	//db.Connect()
+	dbpg := db.Connect()
+	models.CreateProductItemsTable(dbpg)
 	router := gin.Default()
 	router.Use(CORSMiddleware())
 
