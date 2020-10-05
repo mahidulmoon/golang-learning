@@ -95,3 +95,4 @@ func (pi *ProductItem) UpdatePrice(db *pg.DB) error{
 	fmt.Println("Price updated successfully")
 	return nil
 }
+
