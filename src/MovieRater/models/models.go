@@ -64,3 +64,10 @@ func (u *User) CreateUser() error{
 	_,err:= dbpg.Model(u).Insert()
 	return err
 }
+
+func GetAllUser() ([]User,error){
+	dbpg := db.Connect()
+	var model []User
+	err := dbpg.Model(&model).Order("id ASC").Select()
+	return model,err
+}

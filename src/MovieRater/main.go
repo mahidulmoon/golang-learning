@@ -17,6 +17,7 @@ func main(){
 	router.Use(CORSMiddleware())
 
 	router.POST("/userregister",handlers.UserRegister())
+	router.GET("/alluser",handlers.AllUser())
 
 	router.Run()
 
