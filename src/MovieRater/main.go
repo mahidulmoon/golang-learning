@@ -19,7 +19,8 @@ func main() {
 
 	router.POST("/userregister", handlers.UserRegister())
 	router.GET("/alluser", handlers.AllUser())
-	router.POST("/allmovie", handlers.MovieCreate())
+	router.POST("/createmovie", handlers.MovieCreate())
+	router.GET("/allmovie", handlers.GetMovie())
 
 	router.Run()
 

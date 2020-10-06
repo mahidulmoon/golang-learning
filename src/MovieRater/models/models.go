@@ -77,3 +77,11 @@ func (m *Movie) AddMovie() error {
 	_, err := dbpg.Model(m).Insert()
 	return err
 }
+
+func GetAllMovie() ([]Movie, error) {
+	dbpg := db.Connect()
+
+	var movie []Movie
+	err := dbpg.Model(&movie).Order("id ASC").Select()
+	return movie, err
+}
