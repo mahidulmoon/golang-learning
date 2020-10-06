@@ -31,7 +31,7 @@ type Rating struct{
 	Id int `sql:"id,pk" json:"id"`
 	UserID int `sql:"user_id,pk" json:"user_id"`
 	User *User `sql:"rel:has-one"`
-	MovieID int `sql:"movie_id" json:"movie_id"`
+	MovieID int `sql:"movie_id,pk" json:"movie_id"`
 	Movie *Movie `sql:"rel:has-one"`
 	Rating  float64 `sql:"rating" json:"rating"`
 }
