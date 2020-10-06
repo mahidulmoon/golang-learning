@@ -4,7 +4,7 @@ import(
 	"fmt"
 	orm "github.com/go-pg/pg/orm"
 	pg "github.com/go-pg/pg"
-	// db "MovieRater/databaseconnector"
+	db "MovieRater/databaseconnector"
 )
 
 type User struct{
@@ -54,6 +54,13 @@ func CreateProductItemsTable(db *pg.DB) error{
 		fmt.Println("Error while creating table rating",createErr2)
 		return createErr3
 	}
-	fmt.Println("Table productItems created successfully")
+	fmt.Println("Tables created successfully")
 	return nil
+}
+
+
+func (u *User) CreateUser() error{
+	dbpg := db.Connect()
+	_,err:= dbpg.Model(u).Insert()
+	return err
 }
