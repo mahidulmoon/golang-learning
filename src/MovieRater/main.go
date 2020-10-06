@@ -3,9 +3,11 @@ package main
 import(
 	//"fmt"
 	db "MovieRater/databaseconnector"
+	"MovieRater/models"
 )
 
 func main(){
 	//fmt.Println("hello")
-	db.Connect()
+	dbpg := db.Connect()
+	models.CreateProductItemsTable(dbpg)
 }
