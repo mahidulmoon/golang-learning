@@ -1,14 +1,15 @@
 package main
 
-import(
+import (
 	//"fmt"
 	db "MovieRater/databaseconnector"
-	"MovieRater/models"
-	"github.com/gin-gonic/gin"
 	"MovieRater/handlers"
+	"MovieRater/models"
+
+	"github.com/gin-gonic/gin"
 )
 
-func main(){
+func main() {
 	//fmt.Println("hello")
 	dbpg := db.Connect()
 	models.CreateProductItemsTable(dbpg)
@@ -16,8 +17,9 @@ func main(){
 
 	router.Use(CORSMiddleware())
 
-	router.POST("/userregister",handlers.UserRegister())
-	router.GET("/alluser",handlers.AllUser())
+	router.POST("/userregister", handlers.UserRegister())
+	router.GET("/alluser", handlers.AllUser())
+	router.POST("/allmovie", handlers.MovieCreate())
 
 	router.Run()
 
