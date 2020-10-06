@@ -21,6 +21,7 @@ func main() {
 	router.GET("/alluser", handlers.AllUser())
 	router.POST("/createmovie", handlers.MovieCreate())
 	router.GET("/allmovie", handlers.GetMovie())
+	router.POST("/rating", handlers.Rating())
 
 	router.Run()
 

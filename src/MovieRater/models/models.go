@@ -85,3 +85,10 @@ func GetAllMovie() ([]Movie, error) {
 	err := dbpg.Model(&movie).Order("id ASC").Select()
 	return movie, err
 }
+
+func (r *Rating) RateMovie() error {
+	dbpg := db.Connect()
+
+	_, err := dbpg.Model(r).Insert()
+	return err
+}
