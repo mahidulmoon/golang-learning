@@ -92,3 +92,17 @@ func (r *Rating) RateMovie() error {
 	_, err := dbpg.Model(r).Insert()
 	return err
 }
+
+// func MovieWithRating(id int) (Movie, rate, error) {
+// 	dbpg := db.Connect()
+
+// 	var movie Movie
+// 	var rating Rating
+
+// 	err := dbpg.Model(&movie).Where("id = ?", id).Select()
+
+// 	rate := dbpg.Model(&rating).Where("movie_id = ?", id).Select("rating")
+
+// 	fmt.Println(rate)
+// 	return movie, rate, err
+// }
