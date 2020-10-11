@@ -44,3 +44,31 @@ func(f *Files) AddFiles() error {
 	_, err := dbpg.Model(f).Insert()
 	return err
 }
+
+func DeleteFiles(id int) error{
+	dbpg := db.Connect()
+	var file Files
+	_, err := dbpg.Model(&file).Where("id = ?",id).Delete()
+	return err
+}
+
+func GetAllFiles() ([]Files,error){
+	dbpg := db.Connect()
+	var file []Files
+	err := dbpg.Model(&file).Select()
+	return file,err
+}
+
+func GetFilesByID(id int) (Files,error){
+	dbpg := db.Connect()
+	var file Files
+	err := dbpg.Model(&file).Where("id = ?",id).Select()
+	return file,err
+}
+
+func(f *Files) UpdateFiles() error {
+	dbpg := db.Connect()
+	f.Updated=time.Now()
+	_, err := dbpg.Model(f).Where("id = ?",f.Id).Update()
+	return err
+}

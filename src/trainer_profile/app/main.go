@@ -17,14 +17,19 @@ func main() {
 	router := gin.Default()
 
 	router.Use(CORSMiddleware())
-
+	//workshoprequest_api
 	router.POST("/addworkshop", handlers.WorkShopCreate())
-	router.POST("/addfiles", handlers.FilesCreate())
 	router.GET("/allworkshoprequest", handlers.GetWorkShopRequests())
 	router.GET("/workshoprequest/:id", handlers.GetWorkShopResponseById())
 	router.DELETE("/deleteworkshoprequest/:id", handlers.DeleteWorkShopResponseById())
 	router.PATCH("/updateworkshoprequest/:id", handlers.UpdateWorkShopResponse())
 	
+	//files_api
+	router.POST("/addfiles", handlers.FilesCreate())
+	router.DELETE("/deletefiles/:id", handlers.DeleteFileById())
+	router.GET("/allfiles", handlers.AllFiles())
+	router.GET("/files/:id", handlers.GetFilesById())
+	router.PATCH("/updatefiles/:id", handlers.UpdateFiles())
 
 	router.Run()
 	
