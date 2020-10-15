@@ -7,19 +7,16 @@ import (
 
 func TestAddFiles(t *testing.T) {
 	f := Files{
-		
-		
-		Trainer_Id : 31,
-		Role : "role check again",
-		OriginalName : "mahidul",
-		Type : "typechecked",
-		Name : "moon",
-		Link : "youtube.com",
-		Access : "trainer",
-		
-		
+
+		Trainer_Id:   31,
+		Role:         "role check again",
+		OriginalName: "mahidul",
+		Type:         "typechecked",
+		Name:         "moon",
+		Link:         "youtube.com",
+		Access:       "trainer",
 	}
-	err := f.AddFiles()
+	err := f.Add()
 	if err != nil {
 		fmt.Println(err)
 		t.Fail()

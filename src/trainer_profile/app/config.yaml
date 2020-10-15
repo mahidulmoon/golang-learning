@@ -1,0 +1,2 @@
+dbstring: "postgres://postgres:1234@localhost:5432/medium"
+dbname: "medium"
