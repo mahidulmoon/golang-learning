@@ -30,7 +30,7 @@ func Upload() gin.HandlerFunc {
 
 		m := resize.Resize(795, 636, img, resize.Lanczos3)
 
-		out, err := os.Create("static/" + filename)
+		out, err := os.Create("static/WSR" + filename)
 		//Note that the static/uploadfile / here is not / static/uploadfile/
 		if err != nil {
 			log.Fatal(err)
