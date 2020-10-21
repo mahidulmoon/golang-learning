@@ -43,7 +43,7 @@ func Upload() gin.HandlerFunc {
 		jpeg.Encode(out, m, nil)
 
 		c.JSON(200, gin.H{
-			"hello": "success",
+			"message": "success",
 		})
 	}
 }
