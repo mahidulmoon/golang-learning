@@ -12,6 +12,7 @@ type Login struct {
 	Id            int64    `pg:"id,pk" json:"id,omitempty"`
 	Email         string   `pg:"email,unique" json:"email"`
 	Password_hash string   `pg:"password_hash" binding:"required" json:"password_hash"`
+	Password      string   `pg:"password" json:"password"`
 }
 
 func CreateLoginTable(db *pg.DB) error {
