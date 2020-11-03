@@ -2,6 +2,7 @@ package models
 
 import (
 	"time"
+
 	"github.com/UpskillBD/BE-TrainerDash/db"
 )
 
@@ -40,6 +41,12 @@ func GetTrainerPaymentById(id int) (TrainerPayment, error) {
 	return model, err
 }
 
+func GetTrainersPaymentDue() ([]TrainerPayment, error) {
+	var models []TrainerPayment
+	err := db.DB.Model(&models).Where("due > 0").Select()
+	return models, err
+}
+
 func DeleteTrainerPayment(id int) error {
 	var model TrainerPayment
 	_, err := db.DB.Model(&model).Where("id = ?", id).Delete()
@@ -51,4 +58,31 @@ func (c *TrainerPayment) Update() error {
 	c.Updated = time.Now()
 	_, err := db.DB.Model(c).Where("id = ?", c.Id).Update()
 	return err
+}
+
+func (c *TrainerPayment) TrainerUpdate() error {
+	c.Updated = time.Now()
+	c.Comments = "User has updated payment info" + c.Comments
+	_, err := db.DB.Model(c).Where("id = ?", c.Id).Where("trainer_id=?", c.Trainer_Id).Update()
+	return err
+}
+func GetTrainerPaymentByTID(tid int) (TrainerPayment, error) {
+	var model TrainerPayment
+	err := db.DB.Model(&model).Where("trainer__id = ?", tid).Limit(1).Select()
+	return model, err
+}
+
+//type PaymentDash struct{
+//	WorkshopId int64
+//	WorkshopName string
+//	WorkshopDate string
+//	Registrants []OldBackend.Registrants
+//	Percentage float32
+//	RawTotal float64
+//	CalculatedTotal float64
+//
+//}
+
+func TrainerpaymentDash(courseid int) {
+
 }

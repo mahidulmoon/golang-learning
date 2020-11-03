@@ -1,0 +1,185 @@
+package api
+
+import (
+	"errors"
+	"fmt"
+	"github.com/UpskillBD/BE-TrainerDash/models"
+	"net/http"
+	"path/filepath"
+	"strconv"
+	"strings"
+	"time"
+	"github.com/gin-gonic/gin"
+)
+
+//List of valid extensions
+var extensions []string = []string{".pdf", ".doc", ".docx", ".odt", ".txt", ".ppt", ".pptx", ".odp", ".xls", ".xlsx", ".ods", ".jpg", ".jpeg", ".png", ".bmp", ".gif"}
+
+// IsValidExtension checks whether if the extension is valid for upload
+func IsValidExtension(extension string) bool {
+	for _, ext := range extensions {
+		if ext == extension {
+			return true
+		}
+	}
+	return false
+}
+
+// GetFileIcon returns an icon for the file
+func GetFileIcon(extension string) (string, error) {
+	for _, ext := range []string{".pdf", ".doc", ".docx", ".odt", ".txt"} {
+		if ext == extension {
+			return "document.png", nil
+		}
+	}
+	for _, ext := range []string{".ppt", ".pptx", ".odp"} {
+		if ext == extension {
+			return "presentation.png", nil
+		}
+	}
+	for _, ext := range []string{".xls", ".xlsx", ".ods"} {
+		if ext == extension {
+			return "spreadsheet.png", nil
+		}
+	}
+	for _, ext := range []string{".jpg", ".jpeg", ".png", ".bmp", ".gif"} {
+		if ext == extension {
+			return "image.png", nil
+		}
+	}
+	return "file.png", errors.New("invalid extension")
+}
+
+func FileUploadHandler() func(c *gin.Context) {
+	return func(c *gin.Context) {
+		
+		model:=models.Files{
+			Role:         c.PostForm("role"),
+			OriginalName: c.PostForm("originalname"),
+			Type:         c.PostForm("type"),
+			Name:         c.PostForm("name"),
+			Access:       c.PostForm("access"),
+			Link:		 c.PostForm("link"),
+		}
+		temp,err:=strconv.Atoi(c.PostForm("trainer_id"))
+		model.Trainer_Id=int64(temp)
+
+		fmt.Println(model.Trainer_Id,model.Role,model.OriginalName,model.Type,model.Name,model.Access)
+
+		//err := c.ShouldBindJSON(&model)
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
+		file, err := c.FormFile("file")
+
+		if err != nil {
+			fmt.Println(err)
+			c.String(http.StatusBadRequest, fmt.Sprintf("get form err: %s", err.Error()))
+			return
+		}
+		// Exits if uploaded file is not a valid extension
+		if !IsValidExtension(filepath.Ext(file.Filename)) {
+			fmt.Println("INVALID EXT")
+			c.JSON(http.StatusBadRequest, fmt.Sprintf("upload file err: Invalid file type"))
+			return
+		}
+		//img, err := GetFileIcon(filepath.Ext(file.Filename))
+
+		OriginalFilename := strings.Split(filepath.Base(file.Filename), ".")
+		filename := fmt.Sprint(time.Now().Unix()) + "." + OriginalFilename[len(OriginalFilename)-1]
+		//fmt.Println(filename)
+		fileSrc := "../uploads/" + filename
+		// FILE SAVED
+		if err := c.SaveUploadedFile(file, fileSrc); err != nil {
+			//fmt.Println("Something went wrong!!")
+			fmt.Println(err)
+			c.JSON(http.StatusBadRequest, fmt.Sprintf("upload file err: %s", err.Error()))
+			return
+		}else{
+			model.Link=fileSrc
+			resp,err:=model.Add()
+			if err!=nil{
+				c.JSON(http.StatusInternalServerError, fmt.Sprintf("upload file err: %s", err.Error()))
+				return
+
+			}else{
+				c.JSON(200, gin.H{
+					"file": resp,
+					"success": "files added successfully",
+				})
+			}
+		}
+	}
+}
+
+
+func FileUpdateHandler() func(c *gin.Context) {
+	return func(c *gin.Context) {
+		model:=models.Files{
+			Role:         c.PostForm("role"),
+			OriginalName: c.PostForm("originalname"),
+			Type:         c.PostForm("type"),
+			Name:         c.PostForm("name"),
+			Access:       c.PostForm("access"),
+			Link:		 c.PostForm("link"),
+		}
+		temp,err:=strconv.Atoi(c.PostForm("trainer_id"))
+		model.Trainer_Id=int64(temp)
+		temp,err=strconv.Atoi(c.PostForm("id"))
+		model.Id=int64(temp)
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
+		file, err := c.FormFile("file")
+		if file==nil{
+			fmt.Println("file is empty")
+			resp,err := model.Update()
+			if err!=nil{
+				c.JSON(http.StatusInternalServerError, fmt.Sprintf("upload file err: %s", err.Error()))
+				return
+
+			}else{
+				c.JSON(200, gin.H{
+					"file": resp,
+					"success": "files added successfully",
+				})
+				return
+			}
+		}
+		if err != nil {
+			fmt.Println(err)
+			c.String(http.StatusBadRequest, fmt.Sprintf("get form err: %s", err.Error()))
+			return
+		}
+		// Exits if uploaded file is not a valid extension
+		if !IsValidExtension(filepath.Ext(file.Filename)) {
+			fmt.Println("INVALID EXT")
+			c.JSON(http.StatusBadRequest, fmt.Sprintf("upload file err: Invalid file type"))
+			return
+		}
+		//img, err := GetFileIcon(filepath.Ext(file.Filename))
+
+		OriginalFilename := strings.Split(filepath.Base(file.Filename), ".")
+		filename := fmt.Sprint(time.Now().Unix()) + "." + OriginalFilename[len(OriginalFilename)-1]
+		//fmt.Println(filename)
+		fileSrc := "../uploads/" + filename
+		// FILE SAVED
+		if err := c.SaveUploadedFile(file, fileSrc); err != nil {
+			//fmt.Println("Something went wrong!!")
+			fmt.Println(err)
+			c.JSON(http.StatusBadRequest, fmt.Sprintf("upload file err: %s", err.Error()))
+			return
+		}else{
+			model.Link=fileSrc
+			resp,err := model.Update()
+			if err!=nil{
+				c.JSON(http.StatusInternalServerError, fmt.Sprintf("upload file err: %s", err.Error()))
+				return
+
+			}else{
+				c.JSON(200, gin.H{
+					"file": resp,
+					"success": "files updated successfully",
+				})
+			}
+		}
+	}
+}

@@ -2,11 +2,9 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-
 )
 
 func RunServer(port string) {
-
 
 	//Initiate router
 	router := gin.Default()
@@ -15,61 +13,55 @@ func RunServer(port string) {
 	//Access groups
 	admin := router.Group("/admin")
 	trainer := router.Group("/trainer")
+
+	//-----------test
+	router.GET("/test", TrainerTokenCatch())
+
 	//---------------------ADMIN
 	//WORKSHOP REQUEST
-	admin.GET("/workshop-requests/",GetWorkShopRequests())
-	admin.GET("/worshop-request/:id",GetWorkShopResponseById())
-	//admin.GET("/workshoprequest/status/:status",GetWorkshopRequestbyStatus())
-	admin.POST("/worshop-request/:id",UpdateWorkShopRequest())
-	//admin.POST("/workshop-request/status/id",ChangeStatus())
-	admin.DELETE("/worshop-request/:id",DeleteWorkShopRequestById())
+	admin.GET("/workshop-requests/", GetWorkShopRequests())
+	admin.GET("/worshop-request/:id", GetWorkShopResponseById())
+	admin.GET("/workshop-request/status/:status", GetWorkshopRequestbyStatus())
+	admin.POST("/worshop-request/:id", UpdateWorkShopRequest())
+	admin.DELETE("/worshop-request/:id", DeleteWorkShopRequestById())
+	admin.GET("/workshop-request/workshop/:id", GetWSRbyWID())
 	//FILES
-	//admin.GET("/workshop-files/",GetAllFiles())
-	admin.GET("/workshop-files/:id",GetFilesById())
-	//admin.GET("/workshop-files/ws/:id",GetFilesByWID())
-	admin.POST("/workshop-files/",FilesCreate())
-	admin.POST("/workshop-files/:id/update",UpdateFiles())
-	admin.DELETE("/workshop-files/:id",DeleteFileById())
+	admin.GET("/workshop-files/", GetAllFiles())
+	admin.GET("/workshop-files/:id", GetFilesById())
+
+	admin.POST("/workshop-files/", FilesCreate())
+	admin.POST("/workshop-files/:id/update", UpdateFiles())
+	admin.DELETE("/workshop-files/:id", DeleteFileById())
 
 	//TRAINER PAYMENT
-	admin.GET("/trainer-payments/",GetTrainerPayments())
-	//admin.GET("/trainer-payment/:id",GetTrainerPaymentByTID)
-	//admin.GET("/trainer-payment/due", GetTrainersPaymentDue())
-	admin.POST("/trainer-payment/:id",AddTrainerPayment())
-	admin.POST("/trainer-payment/:id/update",UpdateTrainerPayment())
-
+	admin.GET("/payments", GetTrainerPayments())
+	admin.GET("/payment/:id", GetTrainerPaymentByID())
+	admin.POST("/payment/:id", AdminAddTrainerPayment())
+	admin.PATCH("/payment/:id", AdminUpdateTrainerPayment())
+	admin.GET("/payments/due", GetTrainersPaymentDue()) //-----
 	//---------------------TRAINER
 	//WORKSHOP REQUEST
-	//trainer.GET("/worshop-requests/",GetWorkshopeRequestByTrainer())//WS by trainer ID from token
-	trainer.GET("/worshop-request/:id",GetWorkShopResponseById())//TOKEN
-	trainer.POST("/worshop-request/:id",WorkShopCreate())//TOKEN
+	trainer.GET("/worshop-requests/", GetWorkshopRequestsByTrainer())     //WS by trainer ID from token
+	trainer.GET("/worshop-request/:id", TrainerGetWorkShopResponseById()) //TOKEN
+	trainer.POST("/worshop-request/", WorkshopRequestCreate())            //TOKEN
 
 	//FILES
-	trainer.GET("/workshop-files/:id", GetFilesById())//TOKEN
-	//trainer.GET("/workshop-files/ws/:id", GetFilesByWID())//TOKEN
-	trainer.POST("/workshop-files/:id", FilesCreate())//TOKEN
+	trainer.GET("/workshop-files/ws/:id", TrainerGetFilesbyWID()) //TOKEN
+	trainer.POST("/workshop-files/", TrainerFilesCreate())        //TOKEN
+	trainer.POST("/upload", UploadHandler())
 
 	//TRAINER PAYMENT
-	//trainer.GET("/trainer-payment/:id",GetTrainerPaymentByTID)//token
-	trainer.POST("/trainer-payment/:id",AddTrainerPayment())//token
-	trainer.POST("/trainer-payment/:id/update",UpdateTrainerPayment())//token+add comment
+	trainer.GET("/trainer-payment/", GetTrainerPaymentByTID())       //token
+	trainer.GET("/trainer-duepayment/", GetTrainerDuePaymentByTID()) //token duepayment
+	trainer.POST("/trainer-payment/", TrainerAddTrainerPayment())    //token
+	trainer.POST("/trainer-payment/update", UpdateTrainerPayment())  //token+add comment
 
-
-
-	////workshoprequest_api
-	//router.POST("/addworkshop", handlers.WorkShopCreate())
-	//router.GET("/allworkshoprequest", handlers.GetWorkShopRequests())
-	//router.GET("/workshoprequest/:id", handlers.GetWorkShopResponseById())
-	//router.DELETE("/deleteworkshoprequest/:id", handlers.DeleteWorkShopResponseById())
-	//router.PATCH("/updateworkshoprequest/:id", handlers.UpdateWorkShopResponse())
-	//
-	////files_api
-	//router.POST("/addfiles", handlers.FilesCreate())
-	//router.DELETE("/deletefiles/:id", handlers.DeleteFileById())
-	//router.GET("/allfiles", handlers.AllFiles())
-	//router.GET("/files/:id", handlers.GetFilesById())
-	//router.PATCH("/updatefiles/:id", handlers.UpdateFiles())
-
+	//New
+	admin.POST("/paymentshareadd/", TrainerPaymentShareCreate())
+	admin.GET("/allpaymentshare/", GetAllTrainerPaymentShare())
+	admin.GET("/getpaymentsharebywid/:wid", GetShareByWID())
+	admin.PATCH("/updatepaymentsharebywid/", UpdateTrainerPaymentShare())
+	admin.DELETE("/deletepaymentsharebyid/:id", DeleteShareByID())
 	router.Run(port)
 }
 

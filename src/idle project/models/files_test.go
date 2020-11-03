@@ -8,15 +8,15 @@ import (
 func TestAddFiles(t *testing.T) {
 	f := Files{
 
-		Trainer_Id:   31,
-		Role:         "role check again",
+		Trainer_Id:   3,
+		Role:         "role check ",
 		OriginalName: "mahidul",
-		Type:         "typechecked",
+		Type:         "type checked",
 		Name:         "moon",
-		Link:         "youtube.com",
-		Access:       "trainer",
+		Link:         "facebook.com",
+		Access:       "admin",
 	}
-	err := f.Add()
+	_,err := f.Add()
 	if err != nil {
 		fmt.Println(err)
 		t.Fail()

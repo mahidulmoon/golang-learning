@@ -2,13 +2,14 @@ package models
 
 import (
 	"time"
+
 	"github.com/UpskillBD/BE-TrainerDash/db"
 )
 
 type Files struct {
 	tablename    struct{}  `pg:"files"`
 	Id           int64     `pg:"id,pk" json:"id,omitempty"`
-	Trainer_Id   int64     `pg:"trainer_id" binding:"required" json:"trainer_id"`
+	Trainer_Id   int64     `pg:"trainer_id" binding:"required" json:"trainer_id,omitempty"`
 	Role         string    `pg:"role" binding:"required" json:"role"`
 	OriginalName string    `pg:"originalname" binding:"required" json:"originalname"`
 	Type         string    `pg:"type" binding:"required" json:"type" `
@@ -19,10 +20,15 @@ type Files struct {
 	Updated      time.Time `pg:"updated" json:"updated,omitempty"`
 }
 
-func (f *Files) Add() error {
+func (f *Files) Add() (FileResponse, error) {
 	f.Created = time.Now()
-	_, err := db.DB.Model(f).Insert()
-	return err
+	_, err := db.DB.Model(f).Returning("*").Insert()
+	model := FileResponse{
+		File_id:   int(f.Id),
+		File_name: f.Name,
+		Link:      f.Link,
+	}
+	return model, err
 }
 
 func DeleteFile(id int) error {
@@ -44,9 +50,14 @@ func GetFilesByID(id int) (Files, error) {
 	return file, err
 }
 
-func (f *Files) Update() error {
+func (f *Files) Update() (FileResponse, error) {
 
 	f.Updated = time.Now()
 	_, err := db.DB.Model(f).Where("id = ?", f.Id).Update()
-	return err
+	model := FileResponse{
+		File_id:   int(f.Id),
+		File_name: f.Name,
+		Link:      f.Link,
+	}
+	return model, err
 }

@@ -9,16 +9,16 @@ func TestAddWorkshopRequest(t *testing.T) {
 	fmt.Println("test is working")
 	w := WorkshopRequest{
 
-		Trainer_Id:     4,
-		Workshop_ID:    10,
-		Category:       "nothing learning",
-		Description:    " description",
-		Course_outline: "i do know ",
+		Trainer_Id:     40,
+		Workshop_ID:    100,
+		Category:       "nothing ",
+		Description:    "big description",
+		Course_outline: "i don't know ",
 		Duration:       60,
 		Fees:           1400.00,
 		Image:          "nil",
-		Location:       "check location",
-		Name:           "mahidul",
+		Location:       "double check location",
+		Name:           "mahidulmoon",
 		Status:         "modified",
 		Workshop_ts:    40,
 		File: struct {
@@ -28,7 +28,7 @@ func TestAddWorkshopRequest(t *testing.T) {
 		}{
 			File_id:   2,
 			File_name: "file name",
-			Link:      "youtube.com",
+			Link:      "facebook.com",
 		},
 	}
 	err := w.Add()
@@ -43,6 +43,18 @@ func TestAddWorkshopRequest(t *testing.T) {
 
 func TestGetWorkshopRequest(t *testing.T) {
 	w, err := GetWorkshopRequests()
+	if err != nil {
+		fmt.Println(err)
+		t.Fail()
+		return
+	}
+	fmt.Println(w, err)
+
+}
+
+func TestGetWSbyWID(t *testing.T) {
+	w, err := TrainerGetWSRbyWID(100,40)
+	//w,err:=GetWorkshopRequestByTrainer(40)
 	if err != nil {
 		fmt.Println(err)
 		t.Fail()

@@ -1,32 +1,81 @@
 package api
 
 import (
-	dash "github.com/UpskillBD/BE-TrainerDash/models"
-	"github.com/gin-gonic/gin"
+	"fmt"
 	"net/http"
 	"strconv"
+
+	"github.com/UpskillBD/BE-TrainerDash/models"
+	"github.com/gin-gonic/gin"
 )
 
 func FilesCreate() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var file dash.Files
+		var file models.Files
 
 		err := c.ShouldBindJSON(&file)
 
 		if err != nil {
+			fmt.Println(err)
 			c.JSON(http.StatusUnprocessableEntity, gin.H{
-				"error to bind": err,
+				"error":   "could not bind",
+				"message": "could not bind",
 			})
 		} else {
-			err := file.Add()
+			resp, err := file.Add()
 			if err != nil {
+				fmt.Println(err)
 				c.JSON(http.StatusUnprocessableEntity, gin.H{
-					"error to insert": err,
+					"error":   "could not create",
+					"message": "could not create",
 				})
 			} else {
-				c.JSON(200, gin.H{
-					"success": "files added successfully",
+
+				c.JSON(http.StatusCreated, gin.H{
+					"data":    resp,
+					"message": "files added successfully",
 				})
+			}
+		}
+	}
+}
+
+func TrainerFilesCreate() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var file models.Files
+
+		err := c.ShouldBindJSON(&file)
+		token := c.Request.Header.Get("X-Auth-Secret")
+		TrainerID, err := Instance.GetUserFromToken(token)
+		tid, err := strconv.Atoi(TrainerID.ID)
+		if err != nil {
+			fmt.Println(err)
+			c.JSON(http.StatusNotFound, gin.H{
+				"message": "You are not authorized to access",
+			})
+		} else {
+			file.Trainer_Id = int64(tid)
+
+			if err != nil {
+				fmt.Println(err)
+				c.JSON(http.StatusUnprocessableEntity, gin.H{
+					"error": "could not bind",
+				})
+			} else {
+				resp, err := file.Add()
+				if err != nil {
+					fmt.Println(err)
+					c.JSON(http.StatusUnprocessableEntity, gin.H{
+						"error":   "could not insert",
+						"message": "could not insert",
+					})
+				} else {
+
+					c.JSON(http.StatusCreated, gin.H{
+						"data":    resp,
+						"message": "files added successfully",
+					})
+				}
 			}
 		}
 	}
@@ -34,30 +83,34 @@ func FilesCreate() gin.HandlerFunc {
 func DeleteFileById() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		ID, _ := strconv.Atoi(c.Param("id"))
-		err := dash.DeleteFile(ID)
+		err := models.DeleteFile(ID)
 		if err != nil {
+			fmt.Println(err)
 			c.JSON(http.StatusUnprocessableEntity, gin.H{
-				"error": err,
+				"error":   "couldn't delete",
+				"message": "couldn't delete",
 			})
 		} else {
 			c.JSON(200, gin.H{
-				"success": "deleted successfully",
+				"message": "deleted successfully",
 			})
 		}
 	}
 }
 
-func AllFiles() gin.HandlerFunc {
+func GetAllFiles() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
-		files, err := dash.GetAllFiles()
+		files, err := models.GetAllFiles()
 		if err != nil {
+			fmt.Println(err)
 			c.JSON(http.StatusUnprocessableEntity, gin.H{
-				"error": err,
+				"error": "could not get all files",
 			})
 		} else {
 			c.JSON(200, gin.H{
-				"results": files,
+				"data":    files,
+				"message": "files loaded successful",
 			})
 		}
 	}
@@ -66,14 +119,16 @@ func AllFiles() gin.HandlerFunc {
 func GetFilesById() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		ID, _ := strconv.Atoi(c.Param("id"))
-		file, err := dash.GetFilesByID(ID)
+		file, err := models.GetFilesByID(ID)
 		if err != nil {
+			fmt.Println(err)
 			c.JSON(http.StatusUnprocessableEntity, gin.H{
-				"error": err,
+				"error": "could not found",
 			})
 		} else {
 			c.JSON(http.StatusOK, gin.H{
-				"result": file,
+				"data":    file,
+				"message": "resull found",
 			})
 		}
 	}
@@ -81,20 +136,23 @@ func GetFilesById() gin.HandlerFunc {
 
 func UpdateFiles() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var file dash.Files
+		var file models.Files
 		err := c.ShouldBindJSON(&file)
 		if err != nil {
+			fmt.Println(err)
 			c.JSON(http.StatusUnprocessableEntity, gin.H{
-				"error": err,
+				"error": "could not bind",
 			})
 		} else {
-			err := file.Update()
+			resp, err := file.Update()
 			if err != nil {
+				fmt.Println(err)
 				c.JSON(http.StatusInternalServerError, gin.H{
-					"err": err,
+					"data":  resp,
+					"error": "could not update",
 				})
 			} else {
-				c.JSON(http.StatusCreated, gin.H{"status": "updated successfully"})
+				c.JSON(http.StatusCreated, gin.H{"message": "updated successfully"})
 			}
 		}
 	}
