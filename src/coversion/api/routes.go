@@ -9,6 +9,7 @@ func Runserver(port string) {
 	router.Use(CORSMiddleware())
 
 	router.POST("/api/register", UserCreate())
+	router.GET("/api/user", GetUserById())
 
 	router.Run(port)
 }

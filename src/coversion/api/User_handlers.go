@@ -23,8 +23,7 @@ func UserCreate() gin.HandlerFunc {
 			if err != nil {
 				fmt.Println(err)
 				c.JSON(500, gin.H{
-					​"message"​: ​"email taken || phone taken || something wrong"​,
-​					 "code"​: ​500
+					"error": "email taken or phone taken or something wrong",
 				})
 			} else {
 				c.JSON(200, gin.H{
@@ -33,5 +32,25 @@ func UserCreate() gin.HandlerFunc {
 			}
 		}
 
+	}
+}
+
+func GetUserById() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// token := c.Request.Header.Get("X-Auth-Secret")
+		// TrainerID, err := Instance.GetUserFromToken(token)
+		ID := 2
+		user, err := models.GetUserById(ID)
+		if err != nil {
+			fmt.Println(err)
+			c.JSON(500, gin.H{
+				"error": "could not fetch user request || invalid token",
+			})
+		} else {
+			c.JSON(http.StatusOK, gin.H{
+				"data":    user,
+				"message": "resull found",
+			})
+		}
 	}
 }
