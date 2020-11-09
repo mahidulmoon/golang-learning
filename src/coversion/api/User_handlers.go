@@ -27,7 +27,7 @@ func UserCreate() gin.HandlerFunc {
 				})
 			} else {
 				c.JSON(200, gin.H{
-					"message": "user addedd successfully",
+					"message": "registration successful",
 				})
 			}
 		}
