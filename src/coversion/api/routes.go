@@ -8,7 +8,7 @@ func Runserver(port string) {
 	router := gin.Default()
 	router.Use(CORSMiddleware())
 
-	router.GET("/user", UserCreate())
+	router.POST("/api/register", UserCreate())
 
 	router.Run(port)
 }

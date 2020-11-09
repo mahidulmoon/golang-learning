@@ -1,6 +1,7 @@
 package models
 
 import (
+	"coversion/db"
 	"time"
 )
 
@@ -16,4 +17,11 @@ type User struct {
 	EmailVerifiedAt string    `json:"email_verified_at,omitempty" pg:"email_verified_at"`
 	CreatedAt       time.Time `json:"created_at" pg:"created_at"`
 	UpdatedAt       time.Time `json:"updated_at" pg:"updated_at"`
+}
+
+func (u *User) Add() error {
+	u.CreatedAt = time.Now()
+	_, err := db.DB.Model(u).Insert()
+
+	return err
 }
