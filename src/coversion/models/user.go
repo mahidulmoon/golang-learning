@@ -8,9 +8,9 @@ import (
 type User struct {
 	tablename       struct{}  `pg:"user"`
 	ID              int64     `json:"id" pg:"id,pk"`
-	Name            string    `pg:"name" binding:"required"`
+	Name            string    `pg:"name" `
 	Email           string    `pg:"email,unique" binding:"required"`
-	Password        string    `json:"password" binding:"required" pg:"password"`
+	Password        string    `json:"password"  pg:"password"`
 	Phone           string    `pg:"phone,unique" binding:"required" json:"phone"`
 	EmailVerified   bool      `json:"email_verfied" pg:"email_verified"`
 	Token           string    `json:"token,omitempty"`
@@ -30,4 +30,10 @@ func GetUserById(id int) (User, error) {
 	var user User
 	err := db.DB.Model(&user).Where("id = ?", id).Select()
 	return user, err
+}
+
+func (u *User) Validate() (int64, error) {
+	var user User
+	err := db.DB.Model(&user).Where("email = ?", u.Email).WhereOr("phone = ?", u.Phone).Select()
+	return user.ID, err
 }

@@ -10,6 +10,7 @@ func Runserver(port string) {
 
 	router.POST("/api/register", UserCreate())
 	router.GET("/api/user", GetUserById())
+	router.POST("/api/validate", Validation())
 
 	router.Run(port)
 }
