@@ -1,0 +1,1 @@
+if local db, run "go test -run TestSetupSchema" first
