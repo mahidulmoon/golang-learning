@@ -22,8 +22,9 @@ func UserCreate() gin.HandlerFunc {
 			err := values.Add()
 			if err != nil {
 				fmt.Println(err)
-				c.JSON(http.StatusUnprocessableEntity, gin.H{
-					"error": "could not insert",
+				c.JSON(500, gin.H{
+					​"message"​: ​"email taken || phone taken || something wrong"​,
+​					 "code"​: ​500
 				})
 			} else {
 				c.JSON(200, gin.H{
