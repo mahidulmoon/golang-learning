@@ -17,7 +17,7 @@ type Workshop struct {
 	YoutubeLink   string    `pg:"youtube_link" json:"youtube_link"`
 	Location      string    `pg:"location" json:"location"`
 	Instructor    int       `pg:"instructor" json:"instructor"`
-	Status        int       `pg:"status"  json:"status"`
+	Status        string    `pg:"status"  json:"status"`
 	WorkshopTS    string    `pg:"workshop_ts" json:"workshop_ts"`
 	Duration      string    `pg:"duration" json:"duration"`
 	Category      string    `pg:"category" json:"category"`
@@ -47,6 +47,6 @@ func GetWorkshops() ([]Workshop, error) {
 
 func GetWorkshopByID(id int) ([]Workshop, error) {
 	var jobs []Workshop
-	err := db.DB.Model(&jobs).Order("id ASC").Where("status = ?", "COMPLETED").Select()
+	err := db.DB.Model(&jobs).Order("id ASC").Where("id = ?", id).Select()
 	return jobs, err
 }

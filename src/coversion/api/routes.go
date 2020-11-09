@@ -16,6 +16,7 @@ func Runserver(port string) {
 	//workshop
 	router.POST("/api/addworkshop", WorkShopCreate())
 	router.GET("api/workshops", GetWorkShopRequests())
+	router.GET("api/workshops/:id", GetWorkShopById())
 
 	router.Run(port)
 }
