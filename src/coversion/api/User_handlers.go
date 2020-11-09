@@ -39,7 +39,7 @@ func GetUserById() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// token := c.Request.Header.Get("X-Auth-Secret")
 		// TrainerID, err := Instance.GetUserFromToken(token)
-		ID := 2
+		ID := 2 //token
 		user, err := models.GetUserById(ID)
 		if err != nil {
 			fmt.Println(err)
