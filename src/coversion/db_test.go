@@ -13,6 +13,7 @@ func TestSetupSchema(t *testing.T) {
 
 	models := []interface{}{
 		(*models.User)(nil),
+		(*models.Workshop)(nil),
 	}
 
 	for _, model := range models {

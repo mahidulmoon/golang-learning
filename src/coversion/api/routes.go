@@ -8,9 +8,14 @@ func Runserver(port string) {
 	router := gin.Default()
 	router.Use(CORSMiddleware())
 
+	//usertable
 	router.POST("/api/register", UserCreate())
 	router.GET("/api/user", GetUserById())
 	router.POST("/api/validate", Validation())
+
+	//workshop
+	router.POST("/api/addworkshop", WorkShopCreate())
+	router.GET("api/workshops", GetWorkShopRequests())
 
 	router.Run(port)
 }
