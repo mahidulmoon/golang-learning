@@ -20,6 +20,7 @@ func Runserver(port string) {
 
 	//newsletter
 	router.POST("/api/addnewsletter", NewLetterCreate())
+	router.POST("/api/newsletter/validate", NewsLetterValidation())
 
 	router.Run(port)
 }

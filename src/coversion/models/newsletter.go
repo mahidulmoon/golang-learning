@@ -19,3 +19,9 @@ func (n *NewsLetter) Add() error {
 	_, err := db.DB.Model(n).Insert()
 	return err
 }
+
+func (n *NewsLetter) ValidateNewLetter() (int, error) {
+	var letter NewsLetter
+	err := db.DB.Model(&letter).Where("email = ?", n.Email).Select()
+	return letter.ID, err
+}
