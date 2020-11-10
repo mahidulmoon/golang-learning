@@ -14,6 +14,7 @@ func TestSetupSchema(t *testing.T) {
 	models := []interface{}{
 		(*models.User)(nil),
 		(*models.Workshop)(nil),
+		(*models.NewsLetter)(nil),
 	}
 
 	for _, model := range models {
