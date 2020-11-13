@@ -64,3 +64,9 @@ func (u *User) Authenticate(email string, password string) bool {
 		return true
 	}
 }
+
+func (u *User) SetUserToken(token string, email string) error {
+	var user User
+	_, err := db.GetDB().Model(&user).Set("token = ?", token).Where("email = ?", email).Update()
+	return err
+}
