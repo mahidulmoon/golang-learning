@@ -50,6 +50,16 @@ func (j *Workshop) Update() error {
 	return err
 }
 
+func GetPaginatedWorkshops(num int) ([]Workshop, error) {
+	var models []Workshop
+	offset := 0
+	if num > 1 {
+		offset += 5 * (num - 1)
+	}
+	err := db.GetDB().Model(&models).Limit(4).Offset(offset).Select()
+	return models, err
+}
+
 func GetWorkshops() ([]Workshop, error) {
 	var models []Workshop
 	err := db.GetDB().Model(&models).Select()
