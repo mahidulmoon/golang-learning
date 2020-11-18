@@ -13,7 +13,11 @@ import (
 
 func GetWorkshops() func(c *gin.Context) {
 	return func(c *gin.Context) {
-		items, err := models.GetWorkshops()
+		//items, err := models.GetWorkshops()
+		query, _ := c.GetQuery("pages")
+		num, err := strconv.Atoi(query)
+
+		items, err := models.GetPaginatedWorkshops(num)
 		if err == nil {
 			c.JSON(200, gin.H{
 				"data": items,
