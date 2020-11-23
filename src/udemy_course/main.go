@@ -1,18 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"log"
+	"os"
+	"text/template"
+)
 
 func main() {
-	name := "Mahidul Moon"
-
-	html := `
-		<!DOCTYPE html>
-		<html lang="en">
-		<title>Hello World</title>
-		<body>
-			<h1>` + name + `</h1>
-		</body>
-		</html>
-	`
-	fmt.Println(html)
+	tpl, err := template.ParseFiles("tpl.gohtml")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	err = tpl.Execute(os.Stdout, nil)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
