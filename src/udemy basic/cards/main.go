@@ -10,7 +10,7 @@ func main() {
 
 	fmt.Println(card)
 
-	card_array := []string{"Heart of diamonds", newCard()}
+	card_array := deck{"Heart of diamonds", newCard()} //for deck go run main.go deck.go
 
 	card_array = append(card_array, "six of spades")
 
