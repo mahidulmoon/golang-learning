@@ -14,9 +14,7 @@ func main() {
 
 	card_array = append(card_array, "six of spades")
 
-	for i, cards := range card_array {
-		fmt.Println(i, cards)
-	}
+	card_array.print() //calling function from another file
 }
 
 func newCard() string {
