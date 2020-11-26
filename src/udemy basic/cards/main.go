@@ -10,10 +10,15 @@ func main() {
 
 	fmt.Println(card)
 
-	card_from_func := newCard()
-	fmt.Println(card_from_func)
+	card_array := []string{"Heart of diamonds", newCard()}
+
+	card_array = append(card_array, "six of spades")
+
+	for i, cards := range card_array {
+		fmt.Println(i, cards)
+	}
 }
 
 func newCard() string {
-	return "Game of thrones"
+	return "Five of diamonds"
 }
