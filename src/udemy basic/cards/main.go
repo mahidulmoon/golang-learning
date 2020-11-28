@@ -15,6 +15,9 @@ func main() {
 	card_array = append(card_array, "six of spades")
 
 	card_array.print() //calling function from another file
+
+	card_from_newDeck := newDeck()
+	card_from_newDeck.print()
 }
 
 func newCard() string {
