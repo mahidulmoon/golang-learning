@@ -18,6 +18,11 @@ func main() {
 
 	card_from_newDeck := newDeck()
 	card_from_newDeck.print()
+
+	//returning multiple value and receiving that
+	hand, remainingCards := deal(card_from_newDeck, 5)
+	hand.print()
+	remainingCards.print()
 }
 
 func newCard() string {
