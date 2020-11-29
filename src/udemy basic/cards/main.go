@@ -24,7 +24,9 @@ func main() {
 	hand.print()
 	remainingCards.print()
 
-	fmt.Println(card_array.toString())
+	fmt.Println(card_array.toString()) //join list in a single string
+
+	card_array.savetoFile("my_card") //save to file
 }
 
 func newCard() string {
