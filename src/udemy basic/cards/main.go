@@ -27,6 +27,8 @@ func main() {
 	fmt.Println(card_array.toString()) //join list in a single string
 
 	card_array.savetoFile("my_card") //save to file
+
+	newDecFromFile("my_card").print() // read file and print
 }
 
 func newCard() string {
