@@ -23,6 +23,8 @@ func main() {
 	hand, remainingCards := deal(card_from_newDeck, 5)
 	hand.print()
 	remainingCards.print()
+
+	fmt.Println(card_array.toString())
 }
 
 func newCard() string {
