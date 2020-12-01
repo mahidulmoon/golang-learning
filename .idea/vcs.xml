@@ -4,9 +4,11 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/disintegration/bebop" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/fsnotify/fsnotify" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/github.com/go-chi/chi" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/hashicorp/hcl" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/inconshreveable/mousetrap" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/joho/godotenv" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/github.com/kelseyhightower/envconfig" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/magiconair/properties" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/mitchellh/mapstructure" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/github.com/pelletier/go-toml" vcs="Git" />

@@ -36,3 +36,6 @@ func (p person) print(){
 func (p *person) newUpdate(newName string){  //without pointer go just pass the copy of the struct
 	p.lastname = newName
 }
+
+// &variable  -> give the memory address of the value is this variable pointing at
+// *pointer   -> give me the value of this memory address is pointing at
