@@ -24,8 +24,15 @@ func main()  {
 	updatename.lastname = "mahidul"
 
 	updatename.print()
+
+	name.newUpdate("islam")
+	name.print()
 }
 
 func (p person) print(){
 	fmt.Println(p)
+}
+
+func (p *person) newUpdate(newName string){  //without pointer go just pass the copy of the struct
+	p.lastname = newName
 }
