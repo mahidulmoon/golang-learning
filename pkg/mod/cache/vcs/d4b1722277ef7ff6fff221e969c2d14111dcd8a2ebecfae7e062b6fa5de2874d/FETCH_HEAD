@@ -1,0 +1,11 @@
+24f4d5c6044980cf02d1f2ea64b6360f0578f715	not-for-merge	branch 'empty' of https://github.com/jmespath/go-jmespath
+1e3f99e121900d54ca42f85cd5085b35095d6830	not-for-merge	branch 'flatten-slice' of https://github.com/jmespath/go-jmespath
+b120806d9b3cf3455dfa2438a1871013dc1c2cfe	not-for-merge	branch 'functions-scalar' of https://github.com/jmespath/go-jmespath
+85867ce04a66cf84b9963f9811ed8ef5045e1648	not-for-merge	branch 'initial-review' of https://github.com/jmespath/go-jmespath
+ae12203f7c03f1fab81cf169f20b4b03a0f308c8	not-for-merge	branch 'interp-reflect' of https://github.com/jmespath/go-jmespath
+abd9b96519a49efb8f24f4a38a500a5f45f5d4f2	not-for-merge	branch 'jasdel-multiValueSlice' of https://github.com/jmespath/go-jmespath
+a8f65a0fc570bdc325d39269ccb98815837f1d99	not-for-merge	branch 'jep-9' of https://github.com/jmespath/go-jmespath
+5a51c8efb404c7e002b65baa4b591f738e9a3190	not-for-merge	branch 'lexer-perf' of https://github.com/jmespath/go-jmespath
+3d4fd11601ddca248480565884e34e393313cd62	not-for-merge	branch 'master' of https://github.com/jmespath/go-jmespath
+a1916712c41a6a4007c07e47e2582f5ba6e11dc9	not-for-merge	branch 'modern-testing' of https://github.com/jmespath/go-jmespath
+c926bd9aac0b051bb45164a00897cae4fcdd4cec	not-for-merge	branch 'pretty-ast' of https://github.com/jmespath/go-jmespath

@@ -23,5 +23,9 @@ func main()  {
 	updatename.firstname = "moon"
 	updatename.lastname = "mahidul"
 
-	fmt.Println(updatename)
+	updatename.print()
+}
+
+func (p person) print(){
+	fmt.Println(p)
 }

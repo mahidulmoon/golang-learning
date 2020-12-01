@@ -1,0 +1,16 @@
+8cec54691dd09a5323a614565c97d6622dcad10d		branch 'actions' of https://github.com/lib/pq
+6d207a9c1857c14aa92e2d0e721a9f9772983ff6		branch 'go1.15' of https://github.com/lib/pq
+11a44e26994820d8f2b124f3b79150a38919f972		branch 'master' of https://github.com/lib/pq
+4ded0e9383f75c197b3a2aaa6d590ac52df6fd79		tag 'v1.0.0' of https://github.com/lib/pq
+51e2106eed1cea199c802d2a49e91e2491b02056		tag 'v1.1.0' of https://github.com/lib/pq
+bc6a3c0594130b1e34005880bc600b6d3f49fa7f		tag 'v1.1.1' of https://github.com/lib/pq
+3427c32cb71afc948325f299f040e53c1dd78979		tag 'v1.2.0' of https://github.com/lib/pq
+99274577be97ac9b1d95a2d61d566dc9b7cc6a54		tag 'v1.3.0' of https://github.com/lib/pq
+11720195feb4140252d89ec87e6ec66810ca708b		tag 'v1.4.0' of https://github.com/lib/pq
+6a6cbca34361c2cefd2094251ea3fabc6a2359a7		tag 'v1.5.0' of https://github.com/lib/pq
+c904eabba4136fb97e44adefd2f4f979131242c7		tag 'v1.5.1' of https://github.com/lib/pq
+f3b22b2cad9e4567803b7ffd9853b8acda021438		tag 'v1.5.2' of https://github.com/lib/pq
+d408f9c9485706b60bb2b9b9718f3c54f077b506		tag 'v1.6.0' of https://github.com/lib/pq
+8ae9eeaa02388a26cd5586023a0c4166c021a83d		tag 'v1.7.0' of https://github.com/lib/pq
+984a6aa1ca4673778a2965cb1dc74bd070dc8818		tag 'v1.7.1' of https://github.com/lib/pq
+e7751f584844fbf92a5a18b13a0af1c855e34460		tag 'v1.8.0' of https://github.com/lib/pq
