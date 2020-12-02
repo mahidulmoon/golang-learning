@@ -13,5 +13,7 @@ func main(){
 
 	colors["white"] = "#ffffff"   //adding new value in map with key
 
+	delete(colors,"red")
+
 	fmt.Println(colors)
 }
