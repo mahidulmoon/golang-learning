@@ -11,5 +11,7 @@ func main(){
 	// var empty map[string]string     //empty map declared
 	// empty := make(map[string]string)     //empty map declared with builtin function
 
+	colors["white"] = "#ffffff"   //adding new value in map with key
+
 	fmt.Println(colors)
 }
