@@ -15,6 +15,7 @@ func main(){
 
 	for _,link := range links{
 		responseCheck(link)
+		//go responseCheck(link) // go only use before function calling and it is not care about waiting for child function response just execute
 	}
 }
 
