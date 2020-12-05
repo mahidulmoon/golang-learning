@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main(){
@@ -16,6 +17,7 @@ func main(){
 
 	for _,link := range links{
 		//responseCheck(link,c)
+		time.Sleep(5*time.Second)
 		go responseCheck(link,c) // go only use before function calling and it is not care about waiting for child function response just execute
 	}
 	for i:=0;i<len(links);i++{
