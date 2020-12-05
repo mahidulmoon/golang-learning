@@ -24,11 +24,20 @@ func main(){
 		fmt.Println(<-c)
 	}
 
+	//implemetation purpose
+	//for l := range c {
+	//	go func(){
+	//		time.Sleep(5*time.Second)
+	//		responseCheck(l,c)
+	//	}()
+	//}
+
+	//proper way to implement function literation(lamda function)
 	for l := range c {
-		go func(){
+		go func(link string){
 			time.Sleep(5*time.Second)
-			responseCheck(l,c)
-		}()
+			responseCheck(link,c)
+		}(l)
 	}
 
 }
