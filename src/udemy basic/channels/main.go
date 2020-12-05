@@ -15,10 +15,13 @@ func main(){
 	c := make(chan string)
 
 	for _,link := range links{
-		responseCheck(link,c)
-		//go responseCheck(link) // go only use before function calling and it is not care about waiting for child function response just execute
+		//responseCheck(link,c)
+		go responseCheck(link,c) // go only use before function calling and it is not care about waiting for child function response just execute
 	}
-	fmt.Println(<-c)
+	for i:=0;i<len(links);i++{
+		fmt.Println(<-c)
+	}
+
 }
 
 
