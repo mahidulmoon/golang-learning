@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f9eb186-f4bc-416b-a2ae-91ea1edb16b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/trainer_profile/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/trainer_profile/README.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +20,9 @@
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1l0dVzqkV1C8PDYF6n83be2USGs" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -49,6 +53,10 @@
       <screen x="1366" y="-519" width="1920" height="1050" />
     </state>
     <state x="2121" y="-35" key="#Dep/0.0.1366.738/1366.-519.1920.1050@1366.-519.1920.1050" timestamp="1606840773308" />
+    <state x="1831" y="-337" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607171543360">
+      <screen x="1366" y="-519" width="1920" height="1050" />
+    </state>
+    <state x="1831" y="-337" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738/1366.-519.1920.1050@1366.-519.1920.1050" timestamp="1607171543360" />
     <state x="2230" y="-199" key="FileChooserDialogImpl" timestamp="1606890408220">
       <screen x="1366" y="-519" width="1920" height="1050" />
     </state>
