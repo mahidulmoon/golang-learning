@@ -17,5 +17,7 @@ func main(){
 		fmt.Println("Hello 2")
 		wg.Done()
 	}()
+
+	wg.Wait()
 	fmt.Println("Main run successfully")
 }
