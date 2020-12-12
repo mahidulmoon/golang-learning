@@ -42,32 +42,10 @@
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../upskill/src/NodeBB" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="2121" y="-35" key="#Dep" timestamp="1606840773308">
-      <screen x="1366" y="-519" width="1920" height="1050" />
-    </state>
-    <state x="2121" y="-35" key="#Dep/0.0.1366.738/1366.-519.1920.1050@1366.-519.1920.1050" timestamp="1606840773308" />
-    <state x="1831" y="-337" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607171543360">
-      <screen x="1366" y="-519" width="1920" height="1050" />
-    </state>
-    <state x="1831" y="-337" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738/1366.-519.1920.1050@1366.-519.1920.1050" timestamp="1607171543360" />
-    <state x="2003" y="-424" key="CommitChangelistDialog2" timestamp="1607176819993">
-      <screen x="1366" y="-519" width="1920" height="1050" />
-    </state>
-    <state x="2003" y="-424" key="CommitChangelistDialog2/0.0.1366.738/1366.-519.1920.1050@1366.-519.1920.1050" timestamp="1607176819993" />
-    <state x="2230" y="-199" key="FileChooserDialogImpl" timestamp="1606890408220">
-      <screen x="1366" y="-519" width="1920" height="1050" />
-    </state>
-    <state x="2230" y="-199" key="FileChooserDialogImpl/0.0.1366.738/1366.-519.1920.1050@1366.-519.1920.1050" timestamp="1606890408220" />
-    <state x="1896" y="-348" key="SettingsEditor" timestamp="1607516583655">
-      <screen x="1366" y="-519" width="1920" height="1050" />
-    </state>
-    <state x="1896" y="-348" key="SettingsEditor/0.0.1366.738/1366.-519.1920.1050@1366.-519.1920.1050" timestamp="1607516583655" />
   </component>
 </project>
