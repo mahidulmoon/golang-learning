@@ -13,6 +13,7 @@ func main(){
 
 	fmt.Println(mySlice)
 
+	x:=append(mySlice,"appended value")
 	// delete(mySlice,"name") // cannot use delete like this
-	//fmt.Println(mySlice)
+	fmt.Println(x)
 }
