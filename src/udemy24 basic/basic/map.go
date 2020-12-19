@@ -15,4 +15,14 @@ func main() {
 
 	delete(x,"age")
 	fmt.Println(x)
+
+	newMap:= map[int]string{
+		0:"hey",
+		1:"mahidul",
+		2:"moon",
+	}
+
+	for key,value := range newMap{
+		fmt.Println("Key:",key,"and value is :",value)
+	}
 }
