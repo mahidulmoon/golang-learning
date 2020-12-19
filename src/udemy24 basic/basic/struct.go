@@ -13,5 +13,10 @@ func main(){
 	p2:=person{first: "meher",last: "afroz",age: 23}
 
 	fmt.Println(p1)
+	p2.changeName("Md. Meher")
 	fmt.Println(p2)
+}
+
+func(p *person) changeName(name string){
+	p.first = name
 }
