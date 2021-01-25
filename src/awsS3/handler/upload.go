@@ -37,6 +37,7 @@ func HandlerUpload() gin.HandlerFunc{
 
 		c.JSON(200,gin.H{
 			"message" : "success",
+			"downloadlink" : "127.0.0.1:8080/downloadfile/"+filename,
 		})
 	}
 }

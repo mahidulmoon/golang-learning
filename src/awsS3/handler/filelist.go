@@ -37,7 +37,10 @@ func HandlerFileList() gin.HandlerFunc{
 			return
 		}
 		c.Writer.Header().Add("Content-type", "text/html")
-		fmt.Println(result)
+		//fmt.Println(result)
+		c.JSON(200,gin.H{
+			"data" : result.Contents,
+		})
 		//for _, item := range result.Contents {
 		//	fmt.Fprintf(c, "<li>File %s</li>", *item.Key)
 		//}
