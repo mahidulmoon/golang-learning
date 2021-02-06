@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/disintegration/bebop" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/fsnotify/fsnotify" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/go-chi/chi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/hashicorp/hcl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/inconshreveable/mousetrap" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/joho/godotenv" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/kelseyhightower/envconfig" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/magiconair/properties" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/mitchellh/mapstructure" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/pelletier/go-toml" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/spf13/afero" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/spf13/cast" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/spf13/cobra" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/spf13/jwalterweatherman" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/spf13/pflag" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/spf13/viper" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/github.com/subosito/gotenv" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/golang.org/x/text" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gopkg.in/ini.v1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gopkg.in/yaml.v2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/trainer_profile" vcs="Git" />
+  </component>
+</project>

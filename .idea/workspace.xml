@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f9eb186-f4bc-416b-a2ae-91ea1edb16b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/mod/cache/download/github.com/lib/pq/@v/list" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/mod/cache/download/github.com/lib/pq/@v/list" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/sumdb/sum.golang.org/latest" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/sumdb/sum.golang.org/latest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gopgtocsv/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gopgtocsv/main.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/trainer_profile/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/trainer_profile/README.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +42,7 @@
     <property name="go.tried.to.enable.integration.dep.integrator" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../upskill" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../upskill/src/upskill-main" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
