@@ -1,7 +1,7 @@
 package main
 
 import (
-	"microservice/banking/handler"
+	"github.com/mahidulmoon/banking/handler"
 	"net/http"
 )
 
