@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"encoding/json"
 	"encoding/xml"
 	"net/http"
 )
@@ -18,9 +19,12 @@ func GetAllCustomer(w http.ResponseWriter,r *http.Request){
 		{"Mahidul","Chittagong","12345"},
 
 	}
-	//w.Header().Add("Content-Type","application/json")
-	//json.NewEncoder(w).Encode(cutomer)
-
-	w.Header().Add("Content-Type","application/xml")
-	xml.NewEncoder(w).Encode(cutomer)
+	//check the header input and present data according to input
+	if r.Header.Get("Content-Type") == "application/json"{
+		w.Header().Add("Content-Type","application/json")
+		json.NewEncoder(w).Encode(cutomer)
+	}else{
+		w.Header().Add("Content-Type","application/xml")
+		xml.NewEncoder(w).Encode(cutomer)
+	}
 }
