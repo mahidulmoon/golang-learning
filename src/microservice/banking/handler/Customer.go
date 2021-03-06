@@ -3,6 +3,7 @@ package handler
 import (
 	"encoding/json"
 	"encoding/xml"
+	"fmt"
 	"net/http"
 )
 
@@ -27,4 +28,8 @@ func GetAllCustomer(w http.ResponseWriter,r *http.Request){
 		w.Header().Add("Content-Type","application/xml")
 		xml.NewEncoder(w).Encode(cutomer)
 	}
+}
+
+func CreateCustomer(w http.ResponseWriter,r *http.Request){
+	fmt.Fprint(w,"Post request recieved")
 }
